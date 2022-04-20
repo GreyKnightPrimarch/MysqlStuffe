@@ -1,0 +1,10 @@
+CREATE SCHEMA Users_Schema;
+
+	CREATE TABLE users (
+		UserId INT NOT NULL AUTO_INCREMENT,
+		frist_name varchar(255) not null,
+		last_name varchar(255) not null,
+		email varchar(255),
+		created_at  datetime,
+		updated_at datetime
+	) ENGINE=INNODB;
