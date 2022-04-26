@@ -1,0 +1,41 @@
+INSERT INTO `dojos_and_ninjas_schema`.`dojos`
+(`name`)
+VALUES
+('Cheese Ragoon'),
+('Kalamari'),
+('ubento');
+
+use dojos_and_ninjas_schema;
+INSERT INTO `dojos_and_ninjas_schema`.`dojos`
+(`name`)
+VALUES
+('Dojo1'),
+('Dojo2'),
+('Dojo3');
+Delete from dojos
+where dojos.name like 'Dojo%';
+
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas`
+(`frist_name`,
+`Last_name`,
+`age`,
+`Dojo_DojoID`)
+VALUES
+('Carl','Weezer',9,1),
+('Jimmy','Neutron',9,1),
+('Sheen','Estevez',9,1),
+('Cindy','Vortex',9,2),
+('Libby','Fallfax',9,2),
+('Nick','Dean',9,2),
+('#2','Nanobot',1,3),
+('Professor','Calamitous',58,3),
+('Goddard','Neutron',3,3);
+
+select * from ninjas
+where Dojo_DojoID = 1;
+
+select * from ninjas
+where Dojo_DojoID = 3;
+
+Select * from dojos
+where DojoID in ( select Dojo_DojoID from ninjas where NinjaID = (select max(NinjaID) from ninjas  ) );
