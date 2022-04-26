@@ -1,0 +1,46 @@
+use world;
+Select * from countries as c
+inner join languages as l on l.country_id = c.id 
+where l.language = 'slovene'
+order by percentage desc;
+
+select 
+countries.name,
+count(country_id) as num_cities
+from cities
+left join countries on cities.country_id = countries.id
+group by (countries.name)
+order by count(country_id) desc;
+
+
+select 
+cities.name,
+sum(cities.population)
+from cities
+left join countries on cities.country_id = countries.id
+where countries.name = 'Mexico'
+group by (cities.name)
+having sum(cities.population) >500000
+order by sum(cities.population) desc;
+
+Select * from countries as c
+inner join languages as l on l.country_id = c.id 
+where l.percentage > 89.0
+order by percentage desc;
+
+Select * from countries as c
+where c.surface_area <501 and c.population > 100000;
+
+Select * from countries as c
+where c.government_form like '%Constitutional%Monarchy%' and c.capital > 200 and c.life_expectancy > 75;
+
+Select c.name, ci.name, ci.population from countries as c
+right join cities as ci 
+on c.id = ci.country_id
+where c.name = 'Argentina' and ci.district = 'Buenos Aires' and ci.population >500000;
+
+Select c.region,
+count(c.name) as count_of_countries
+from countries as c
+group by (c.region)
+order by count(c.name) desc;
